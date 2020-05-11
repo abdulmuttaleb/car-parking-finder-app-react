@@ -4,7 +4,15 @@ import Parking from './Parking'
 
 export default function Parkings({parkings}){
     return(
-    <ScrollView horizontal contentContainerStyle={styles.parkings}>
+    <ScrollView 
+        horizontal 
+        pagingEnabled
+        scrollEnabled
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+        snapToAlignment="center"
+        style={styles.parkings}
+        >
         {parkings.map(parking => <Parking item={parking} key={parking.id}/>)}
     </ScrollView>
     )
@@ -12,10 +20,10 @@ export default function Parkings({parkings}){
 
 const styles = StyleSheet.create({
     parkings:{
-        flex: 1,
         position: 'absolute',
-        right:20,
-        left: 20,
-        bottom: 10
+        right:0,
+        left: 0,
+        bottom:0,
+        paddingBottom: 12
     }
 })

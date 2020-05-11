@@ -1,5 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Dimensions } from 'react-native'
+
+const { width, height } = Dimensions.get('screen')
 
 export default function Parking({item}){
     return(
@@ -13,7 +15,9 @@ const styles = StyleSheet.create({
     parking:{
         backgroundColor: 'white',
         borderRadius: 6,
-        padding: 12,
-        marginHorizontal: 24
+        padding: 24,
+        marginHorizontal: 24,
+        width: width - (24*2),
+
     }
 })

@@ -1,5 +1,5 @@
 import React, { Component, useState} from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View, Dimensions } from 'react-native'
 import MapView from 'react-native-maps'
 import Header from '../shared/header'
 import Parkings from '../shared/Parkings'
