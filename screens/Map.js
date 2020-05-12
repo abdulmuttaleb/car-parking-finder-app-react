@@ -1,4 +1,4 @@
-import React, { Component, useState} from 'react'
+import React, { Component, useState, useEffect} from 'react'
 import { Text, StyleSheet, View, Dimensions } from 'react-native'
 import MapView from 'react-native-maps'
 import Header from '../shared/header'
@@ -15,6 +15,14 @@ export default function Map() {
         {id: 6, title: 'Parking 6', price: 3, rating: 3, spots: 23, free: 12, location:{lat:37.78865, lng:-122.4364}},
     ])
 
+    useEffect(() => {
+        const hours = {}
+        parkings.map( parking => {
+            {hours[parking.id] = 1}
+        })
+        setHours({hours})
+    })
+
     return (
         <View style={styles.container}>
         <Header />
@@ -27,7 +35,7 @@ export default function Map() {
               }}
               style={styles.mapStyle}
           />
-          <Parkings parkings={parkings} hours={hours}/>
+          <Parkings parkings={parkings} hours={hours} setHours={setHours}/>
         </View>
     )
 }

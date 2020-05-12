@@ -1,14 +1,29 @@
 import React from 'react'
-import { View, StyleSheet, Text, Dimensions, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, Dimensions, TouchableWithoutFeedback, TouchableOpacity, Picker } from 'react-native'
 import { Ionicons} from '@expo/vector-icons'
 
 const { width, height } = Dimensions.get('screen')
 
-export default function Parking({item, hours}){
+export default function Parking({item, hours, setHours}){
     return(
         <View style={styles.parking}>
             <View style={{flex:1, flexDirection:'column'}}>
                 <Text style={{fontSize: 16}}>x {item.spots} {item.title}</Text>
+                {/* <Picker
+                    selectedValue={hours[item.id]}
+                    style={{height: 50, widht: 200}}
+                    onValueChange={(itemValue, itemIndex) => {
+                        setHours({hours:{...hours, [item.id]: itemValue}})
+                        console.log(itemValue)
+                    }}
+                >
+                    <Picker.Item label="01:00" value={1}/>
+                    <Picker.Item label="02:00" value={2}/>
+                    <Picker.Item label="03:00" value={3}/>
+                    <Picker.Item label="04:00" value={4}/>
+                    <Picker.Item label="05:00" value={5}/>
+                    <Picker.Item label="06:00" value={6}/>
+                </Picker> */}
                 <View style={{width:100, borderRadius: 6, borderColor: 'grey', borderWidth: 0.5, padding: 4}}>
                     <Text style={{fontSize: 16}}>05:00 hrs</Text>  
                 </View>

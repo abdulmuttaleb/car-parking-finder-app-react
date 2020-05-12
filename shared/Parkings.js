@@ -1,20 +1,21 @@
 import React from 'react'
-import { ScrollView, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet, FlatList } from 'react-native'
 import Parking from './Parking'
 
-export default function Parkings({parkings, hours}){
+export default function Parkings({parkings, hours, setHours}){
     return(
-    <ScrollView 
-        horizontal 
+    <FlatList
+        horizontal
         pagingEnabled
         scrollEnabled
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
-        snapToAlignment="center"
+        snapToAlignment='center'
         style={styles.parkings}
-        >
-        {parkings.map(parking => <Parking item={parking} key={parking.id} hours={hours}/>)}
-    </ScrollView>
+        data={parkings}
+        keyExtractor={(item, index) => `${item.id}`}
+        renderItem={({item}) => <Parking item={item} hours={hours} setHours={setHours}/>}
+        />
     )
 }
 
