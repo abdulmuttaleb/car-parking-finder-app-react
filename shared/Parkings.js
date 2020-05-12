@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import Parking from './Parking'
 
-export default function Parkings({parkings}){
+export default function Parkings({parkings, hours}){
     return(
     <ScrollView 
         horizontal 
@@ -13,7 +13,7 @@ export default function Parkings({parkings}){
         snapToAlignment="center"
         style={styles.parkings}
         >
-        {parkings.map(parking => <Parking item={parking} key={parking.id}/>)}
+        {parkings.map(parking => <Parking item={parking} key={parking.id} hours={hours}/>)}
     </ScrollView>
     )
 }

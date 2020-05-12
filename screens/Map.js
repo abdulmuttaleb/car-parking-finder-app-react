@@ -5,13 +5,14 @@ import Header from '../shared/header'
 import Parkings from '../shared/Parkings'
 
 export default function Map() {
+    const [hours, setHours] = useState({})
     const [parkings, setParkings] = useState([
-        {id: 1, title: 'Parking 1', price: 5, rating: 4.2, spots: 20, free: 1},
-        {id: 2, title: 'Parking 2', price: 6, rating: 3.5, spots: 15, free: 13},
-        {id: 3, title: 'Parking 3', price: 4, rating: 5, spots: 10, free: 8},
-        {id: 4, title: 'Parking 4', price: 3, rating: 3, spots: 23, free: 12},
-        {id: 5, title: 'Parking 4', price: 3, rating: 3, spots: 23, free: 12},
-        {id: 6, title: 'Parking 4', price: 3, rating: 3, spots: 23, free: 12},
+        {id: 1, title: 'Parking 1', price: 5, rating: 4.2, spots: 20, free: 1, location:{lat:37.78815, lng:-122.4314}},
+        {id: 2, title: 'Parking 2', price: 6, rating: 3.5, spots: 15, free: 13, location:{lat:37.78825, lng:-122.4324}},
+        {id: 3, title: 'Parking 3', price: 4, rating: 5, spots: 10, free: 8, location:{lat:37.78835, lng:-122.4334}},
+        {id: 4, title: 'Parking 4', price: 3, rating: 3, spots: 23, free: 12, location:{lat:37.78845, lng:-122.4344}},
+        {id: 5, title: 'Parking 5', price: 3, rating: 3, spots: 23, free: 12, location:{lat:37.78855, lng:-122.4354}},
+        {id: 6, title: 'Parking 6', price: 3, rating: 3, spots: 23, free: 12, location:{lat:37.78865, lng:-122.4364}},
     ])
 
     return (
@@ -26,7 +27,7 @@ export default function Map() {
               }}
               style={styles.mapStyle}
           />
-          <Parkings parkings={parkings}/>
+          <Parkings parkings={parkings} hours={hours}/>
         </View>
     )
 }
