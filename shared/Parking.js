@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get('screen')
 
 export default function Parking({item, hours, setHours}){
     return(
-        <View style={styles.parking}>
+        <View style={[styles.parking, styles.shadow]}>
             <View style={{flex:1, flexDirection:'column'}}>
                 <Text style={{fontSize: 16}}>x {item.spots} {item.title}</Text>
                 {/* <Picker
@@ -72,5 +72,15 @@ const styles = StyleSheet.create({
     },
     buyText:{
         color: 'white'
+    },
+    shadow:{
+        elevation: 9,
+        shadowColor: '#000',
+        shadowOffset:{
+            width: 0,
+            height: 12,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 4
     }
 })

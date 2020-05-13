@@ -12,6 +12,7 @@ export default function Header(){
 const styles = StyleSheet.create({
     header:{
         flex: 0.5,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingHorizontal: 24
     }
 })

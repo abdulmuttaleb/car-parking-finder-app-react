@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
         right:0,
         left: 0,
         bottom:0,
-        paddingBottom: 12
+        paddingBottom: 24
     }
 })
