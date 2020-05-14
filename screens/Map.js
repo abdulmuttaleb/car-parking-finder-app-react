@@ -49,16 +49,18 @@ export default function Map() {
           }
         ])
 
+    const currentPosition = {
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }
+
     return (
         <View style={styles.container}>
         <Header />
           <MapView
-            initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
+            initialRegion={currentPosition}
               style={styles.mapStyle}>
               {parkings.map(parking => (
                   <Marker
@@ -67,8 +69,8 @@ export default function Map() {
                     onPress={() => {setActive(parking.id)}}
                     >
                         <View style={[styles.marker, styles.shadow, active === parking.id? styles.active:null]}>
-                            <Text style={{color:theme.COLORS.red, fontWeight:'bold', fontFamily:''}}>${parking.price}</Text>
-                            <Text style={{color: theme.COLORS.gray}}>  ({parking.free} / {parking.spots})</Text>
+                            <Text style={styles.markerPrice}>${parking.price}</Text>
+                            <Text style={styles.markerStatus}>  ({parking.free} / {parking.spots})</Text>
                         </View>
                     </Marker>
               ))}
@@ -89,9 +91,9 @@ const styles = StyleSheet.create({
     marker:{
         flexDirection: 'row',
         backgroundColor: 'white',
-        borderRadius: 24,
+        borderRadius: theme.SIZES.base * 2,
         paddingVertical: 10,
-        paddingHorizontal: 12,
+        paddingHorizontal: theme.SIZES.base ,
         borderWidth: 1,
         borderColor: 'white'
     },
@@ -100,12 +102,20 @@ const styles = StyleSheet.create({
         shadowColor: theme.COLORS.black,
         shadowOffset:{
             width: 0,
-            height: 12,
+            height: theme.SIZES.base,
         },
         shadowOpacity: 0.1,
         shadowRadius: 4
     },
     active:{
         borderColor: theme.COLORS.red
+    },
+    markerPrice:{
+      color:theme.COLORS.red,
+      fontWeight:'bold', 
+      fontFamily:''
+    },
+    markerStatus:{
+      color: theme.COLORS.gray
     }
 })
