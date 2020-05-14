@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, StyleSheet, FlatList } from 'react-native'
 import Parking from './Parking'
 
-export default function Parkings({parkings, hours, setHours}){
+export default function Parkings({parkings, hours, setHours, setActive}){
     return(
     <FlatList
         horizontal
@@ -14,7 +14,7 @@ export default function Parkings({parkings, hours, setHours}){
         style={styles.parkings}
         data={parkings}
         keyExtractor={(item, index) => `${item.id}`}
-        renderItem={({item}) => <Parking item={item} hours={hours} setHours={setHours}/>}
+        renderItem={({item}) => <Parking item={item} hours={hours} setHours={setHours} setActive={setActive}/>}
         />
     )
 }

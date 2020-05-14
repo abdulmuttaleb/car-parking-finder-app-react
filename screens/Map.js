@@ -1,11 +1,12 @@
 import React, { Component, useState, useEffect} from 'react'
-import { Text, StyleSheet, View, Dimensions } from 'react-native'
+import { Text, StyleSheet, View, Dimensions, TouchableWithoutFeedback } from 'react-native'
 import MapView, {Marker} from 'react-native-maps'
 import Header from '../shared/header'
 import Parkings from '../shared/Parkings'
 
 export default function Map() {
     const [hours, setHours] = useState({})
+    const [active, setActive] = useState(undefined)
     const [parkings, setParkings] = useState([
         {
             id: 1,
@@ -48,14 +49,6 @@ export default function Map() {
           }
         ])
 
-    useEffect(() => {
-        const hours = {}
-        parkings.map( parking => {
-            {hours[parking.id] = 1}
-        })
-        setHours({hours})
-    })
-
     return (
         <View style={styles.container}>
         <Header />
@@ -72,15 +65,16 @@ export default function Map() {
                   <Marker
                     key={parking.id}
                     coordinate={parking.coordinate}
+                    onPress={() => {setActive(parking.id)}}
                     >
-                        <View style={[styles.marker, styles.shadow]}>
+                        <View style={[styles.marker, styles.shadow, active === parking.id? styles.active:null]}>
                             <Text style={{color:'red', fontWeight:'bold', fontFamily:''}}>${parking.price}</Text>
                             <Text style={{color: '#7d818a'}}>  ({parking.free} / {parking.spots})</Text>
                         </View>
                     </Marker>
               ))}
             </MapView>
-          <Parkings parkings={parkings} hours={hours} setHours={setHours}/>
+          <Parkings parkings={parkings} hours={hours} setHours={setHours} setActive={setActive}/>
         </View>
     )
 }
@@ -97,8 +91,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'white',
         borderRadius: 24,
-        paddingVertical: 12,
-        paddingHorizontal: 24
+        paddingVertical: 10,
+        paddingHorizontal: 12,
+        borderWidth: 1,
+        borderColor: 'white'
     },
     shadow:{
         elevation: 9,
@@ -109,5 +105,8 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.1,
         shadowRadius: 4
+    },
+    active:{
+        borderColor: '#B40B15'
     }
 })

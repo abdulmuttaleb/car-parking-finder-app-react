@@ -4,8 +4,9 @@ import { Ionicons} from '@expo/vector-icons'
 
 const { width, height } = Dimensions.get('screen')
 
-export default function Parking({item, hours, setHours}){
+export default function Parking({item, hours, setHours, setActive}){
     return(
+        <TouchableWithoutFeedback onPress={() => {setActive(item.id)}}>
         <View style={[styles.parking, styles.shadow]}>
             <View style={{flex:1, flexDirection:'column'}}>
                 <Text style={{fontSize: 16}}>x {item.spots} {item.title}</Text>
@@ -51,6 +52,7 @@ export default function Parking({item, hours, setHours}){
                     </TouchableOpacity>
             </View>
         </View>
+        </TouchableWithoutFeedback>
     )
 }
 
