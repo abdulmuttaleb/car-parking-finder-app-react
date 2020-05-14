@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text, Dimensions, TouchableWithoutFeedback, TouchableOpacity, Picker } from 'react-native'
 import { Ionicons} from '@expo/vector-icons'
-
+import * as theme from '../themes/theme'
 const { width, height } = Dimensions.get('screen')
 
 export default function Parking({item, hours, setHours, setActive}){
@@ -33,11 +33,11 @@ export default function Parking({item, hours, setHours, setActive}){
             <View style={{flex:1.5, flexDirection: 'row'}}>
                 <View style={{flex: 1, justifyContent: "center", marginHorizontal:24}}>
                     <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', alignItems: "center"}}>
-                        <Ionicons name='ios-pricetag' size={16} color="#7d818a"/>
+                        <Ionicons name='ios-pricetag' size={16} color={theme.COLORS.gray}/>
                         <Text>${item.price}</Text>
                     </View>
                     <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', alignItems: "center"}}>
-                        <Ionicons name='ios-star' size={16} color="#7d818a"/>
+                        <Ionicons name='ios-star' size={16} color={theme.COLORS.gray}/>
                         <Text>{item.rating}</Text>
                     </View>
                 </View>
@@ -58,7 +58,7 @@ export default function Parking({item, hours, setHours, setActive}){
 
 const styles = StyleSheet.create({
     parking:{
-        backgroundColor: 'white',
+        backgroundColor: theme.COLORS.white,
         borderRadius: 6,
         padding: 12,
         marginHorizontal: 24,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     buy:{
         flex:1,
         flexDirection:"row",
-        backgroundColor: 'red',
+        backgroundColor: theme.COLORS.red,
         padding: 12,
         borderRadius: 6
     },
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     shadow:{
         elevation: 9,
-        shadowColor: '#000',
+        shadowColor: theme.COLORS.black,
         shadowOffset:{
             width: 0,
             height: 12,

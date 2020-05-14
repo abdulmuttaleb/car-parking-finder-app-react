@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, Dimensions, TouchableWithoutFeedback } from 're
 import MapView, {Marker} from 'react-native-maps'
 import Header from '../shared/header'
 import Parkings from '../shared/Parkings'
-
+import * as theme from '../themes/theme'
 export default function Map() {
     const [hours, setHours] = useState({})
     const [active, setActive] = useState(undefined)
@@ -59,8 +59,7 @@ export default function Map() {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}
-              style={styles.mapStyle}
-          >
+              style={styles.mapStyle}>
               {parkings.map(parking => (
                   <Marker
                     key={parking.id}
@@ -68,8 +67,8 @@ export default function Map() {
                     onPress={() => {setActive(parking.id)}}
                     >
                         <View style={[styles.marker, styles.shadow, active === parking.id? styles.active:null]}>
-                            <Text style={{color:'red', fontWeight:'bold', fontFamily:''}}>${parking.price}</Text>
-                            <Text style={{color: '#7d818a'}}>  ({parking.free} / {parking.spots})</Text>
+                            <Text style={{color:theme.COLORS.red, fontWeight:'bold', fontFamily:''}}>${parking.price}</Text>
+                            <Text style={{color: theme.COLORS.gray}}>  ({parking.free} / {parking.spots})</Text>
                         </View>
                     </Marker>
               ))}
@@ -82,7 +81,7 @@ export default function Map() {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: theme.COLORS.white,
     },
     mapStyle:{
         flex: 3
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
     },
     shadow:{
         elevation: 9,
-        shadowColor: '#000',
+        shadowColor: theme.COLORS.black,
         shadowOffset:{
             width: 0,
             height: 12,
@@ -107,6 +106,6 @@ const styles = StyleSheet.create({
         shadowRadius: 4
     },
     active:{
-        borderColor: '#B40B15'
+        borderColor: theme.COLORS.red
     }
 })
